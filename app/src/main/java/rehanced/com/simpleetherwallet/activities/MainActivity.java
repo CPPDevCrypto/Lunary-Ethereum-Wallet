@@ -421,8 +421,8 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
             }
             case 3: {
                 new AlertDialog.Builder(this)
-                        .setTitle("About Lunary")
-                        .setMessage("Lunary is published under GPL3\n" +
+                        .setTitle("About Ellaism Wallet")
+                        .setMessage("Ellaism Wallet is a fork of Lunary is published under GPL3\n" +
                                 "Developed by Manuel S. C. for Rehanced, 2017\n"
                                 + "www.rehanced.com\n" +
                                 getString(R.string.translator_name) + "\n" +

@@ -136,7 +136,7 @@ public class WalletStorage {
             ExternalStorageHandler.askForPermissionRead(c);
             return;
         }
-        File[] wallets = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Lunary/").listFiles();
+        File[] wallets = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Ellaism/").listFiles();
         if (wallets == null) {
             Dialogs.noImportWalletsFound(c);
             return;
@@ -205,7 +205,7 @@ public class WalletStorage {
             walletToExport = walletToExport.substring(2);
 
         if (ExternalStorageHandler.hasPermission(c)) {
-            File folder = new File(Environment.getExternalStorageDirectory(), "Lunary");
+            File folder = new File(Environment.getExternalStorageDirectory(), "Ellaism");
             if (!folder.exists()) folder.mkdirs();
 
             File storeFile = new File(folder, walletToExport + ".json");
