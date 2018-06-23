@@ -34,7 +34,7 @@ import java.security.Security;
 import okhttp3.Response;
 import rehanced.com.simpleetherwallet.R;
 import rehanced.com.simpleetherwallet.data.WatchWallet;
-import rehanced.com.simpleetherwallet.fragments.FragmentPrice;
+import rehanced.com.simpleetherwallet.fragments.FragmentPriceEllaism;
 import rehanced.com.simpleetherwallet.fragments.FragmentTransactionsAll;
 import rehanced.com.simpleetherwallet.fragments.FragmentWallets;
 import rehanced.com.simpleetherwallet.interfaces.NetworkUpdateListener;
@@ -135,7 +135,7 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
         appbar = (AppBarLayout) findViewById(R.id.appbar);
 
         fragments = new Fragment[3];
-        fragments[0] = new FragmentPrice();
+        fragments[0] = new FragmentPriceEllaism();
         fragments[1] = new FragmentWallets();
         fragments[2] = new FragmentTransactionsAll();
 
@@ -372,7 +372,7 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
                             public void run() {
                                 if (fragments != null) {
                                     if (fragments[0] != null)
-                                        ((FragmentPrice) fragments[0]).update(true);
+                                        ((FragmentPriceEllaism) fragments[0]).update(true);
                                     if (fragments[1] != null) {
                                         ((FragmentWallets) fragments[1]).updateBalanceText();
                                         ((FragmentWallets) fragments[1]).notifyDataSetChanged();
@@ -483,7 +483,7 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
             public void run() {
                 broadCastDataSetChanged();
                 if (fragments != null && fragments[0] != null) {
-                    ((FragmentPrice) fragments[0]).update(true);
+                    ((FragmentPriceEllaism) fragments[0]).update(true);
                 }
             }
         });
