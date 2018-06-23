@@ -73,7 +73,7 @@ public class EllaismNetwork implements NetworkAPI {
         }
 
         get(url, b);
-
+        //testing commit perms
         //get("http://poloniex.com/public?command=returnChartData&currencyPair=" + (usd ? "USDT_ETH" : "BTC_ETH") + "&start=" + starttime + "&end=9999999999&period=" + period, b);
     }
 
