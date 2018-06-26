@@ -25,7 +25,7 @@ public class ExchangeCalculator {
     private long lastUpdateTimestamp = 0;
     private double rateForChartDisplay = 1;
     private DecimalFormat formatterUsd = new DecimalFormat("#,###,###.##");
-    private DecimalFormat formatterCrypt = new DecimalFormat("#,###,###.####");
+    private DecimalFormat formatterCrypt = new DecimalFormat("#,###,###.########");
     private DecimalFormat formatterCryptExact = new DecimalFormat("#,###,###.#######");
 
     private ExchangeCalculator() {
@@ -38,8 +38,9 @@ public class ExchangeCalculator {
     }
 
     private CurrencyEntry[] conversionNames = new CurrencyEntry[]{
-            new CurrencyEntry("ETH", 1, "Ξ"),
+            new CurrencyEntry("ELLA", 1, "Ξ"),
             new CurrencyEntry("BTC", 0.07, "฿"),
+            //new CurrencyEntry("Satoshi", 0.07, "里"),
             new CurrencyEntry("USD", 0, "$")
     };
 
@@ -162,7 +163,7 @@ public class ExchangeCalculator {
     }
 
     public double getBTCPrice() {
-        return Math.floor(conversionNames[1].getRate() * 10000) / 10000;
+        return Math.floor(conversionNames[1].getRate() * 100000000) / 100000000;
     }
 
     public void updateExchangeRates(final String currency, final NetworkUpdateListener update) throws IOException {
