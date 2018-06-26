@@ -26,7 +26,7 @@ import rehanced.com.simpleetherwallet.utils.TokenIconCache;
 
 public class EllaismNetwork implements NetworkAPI {
     private String token;
-    private String apiUrl = "https://"
+    private String apiUrl = "http://ellaismwallet.nonlocal.ca/";
 
     EllaismNetwork(String theToken)
     {
@@ -62,14 +62,14 @@ public class EllaismNetwork implements NetworkAPI {
 
         String url = null;
         switch (period) {
-            case 300: url = "https://ellaismwallet.nonlocal.ca/returnChartData&fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histominute&limit=1440";
+            case 300: url = apiUrl + "returnChartData?fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histominute&limit=1440";
             break;
-            case 1800: url = "https://ellaismwallet.nonlocal.ca/returnChartData&fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histohour&limit=168";
+            case 1800: url = apiUrl + "returnChartData?fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histohour&limit=168";
             break;
-            case 14400: url = "https://ellaismwallet.nonlocal.ca/returnChartData&fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histoday&limit=30";
+            case 14400: url = apiUrl + "returnChartData?fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histoday&limit=30";
             break;
             default:
-                url = "https://ellaismwallet.nonlocal.ca/returnChartData&fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histoday&limit=365";
+                url = apiUrl + "returnChartData?fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histoday&limit=365";
         }
 
         get(url, b);
@@ -117,7 +117,7 @@ public class EllaismNetwork implements NetworkAPI {
 
 
     public void getEtherPrice(Callback b) throws IOException {
-        get("http://api.etherscan.io/api?module=stats&action=ethprice&apikey=" + token, b);
+        get(apiUrl + "currentPrice", b);
     }
 
 
