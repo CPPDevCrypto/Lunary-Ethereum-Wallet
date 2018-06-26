@@ -43,6 +43,7 @@ import rehanced.com.simpleetherwallet.activities.MainActivity;
 import rehanced.com.simpleetherwallet.network.EtherscanAPI;
 import rehanced.com.simpleetherwallet.utils.ExchangeCalculator;
 import rehanced.com.simpleetherwallet.views.DontShowNegativeFormatter;
+import rehanced.com.simpleetherwallet.views.EllaismFormatter;
 import rehanced.com.simpleetherwallet.views.HourXFormatter;
 import rehanced.com.simpleetherwallet.views.WeekXFormatter;
 import rehanced.com.simpleetherwallet.views.YearXFormatter;
@@ -201,12 +202,14 @@ public class FragmentPriceEllaism extends android.support.v4.app.Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 final ArrayList<Entry> yVals = new ArrayList<Entry>();
                 try {
-                    JSONArray data = new JSONArray(response.body().string());
+                    String resultString = response.body().string();
+                    JSONObject resultObject = new JSONObject(resultString);
+                    JSONArray data = resultObject.getJSONArray("response");
                     double exchangeRate = ExchangeCalculator.getInstance().getRateForChartDisplay();
-                    float commas = displayInUsd ? 100 : 10000;
+                    float commas = displayInUsd ? 100 : 100000000;
                     for (int i = 0; i < data.length(); i++) {
                         JSONObject o = data.getJSONObject(i);
-                        yVals.add(new Entry(o.getLong("date"), (float) Math.floor(o.getDouble("high") * exchangeRate * commas) / commas));
+                        yVals.add(new Entry(o.getLong("date"), (float) Math.floor(o.getDouble("price") * exchangeRate * commas) / commas));
                     }
                     if(ac == null) return;
                     ac.runOnUiThread(new Runnable() {
@@ -254,8 +257,8 @@ public class FragmentPriceEllaism extends android.support.v4.app.Fragment {
         chart.getAxisLeft().setLabelCount(10);
 
         chart.getXAxis().setEnabled(true);
-        chart.getXAxis().setDrawGridLines(false);
-        chart.getXAxis().setDrawAxisLine(false);
+        chart.getXAxis().setDrawGridLines(true);
+        chart.getXAxis().setDrawAxisLine(true);
         chart.getXAxis().setAxisLineColor(0xFFFFFF);
         chart.getXAxis().setTextColor(0xFFFFFF);
 
@@ -283,10 +286,10 @@ public class FragmentPriceEllaism extends android.support.v4.app.Fragment {
         leftAxis.setTypeface(tf);
         leftAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         leftAxis.setTextColor(Color.argb(150, 255, 255, 255));
-        leftAxis.setValueFormatter(new DontShowNegativeFormatter(displayInUsd));
+        leftAxis.setValueFormatter(new EllaismFormatter(displayInUsd));
         chart.getAxisRight().setEnabled(false); // Deactivates horizontal lines
 
-        chart.animateX(1300);
+        //chart.animateX(1300);
         chart.notifyDataSetChanged();
     }
 
