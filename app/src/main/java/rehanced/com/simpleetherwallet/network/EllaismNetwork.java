@@ -34,32 +34,6 @@ public class EllaismNetwork implements NetworkAPI {
     }
 
     public void getPriceChart(long starttime, int period, boolean usd, Callback b) throws IOException {
-        // https://min-api.cryptocompare.com/data/histoday?fsym=ELLA&tsym=USD&limit=365
-        // https://min-api.cryptocompare.com/data/histoday?fsym=ELLA&tsym=USD&limit=30
-        // https://min-api.cryptocompare.com/data/histohour?fsym=ELLA&tsym=USD&limit=168
-        // https://min-api.cryptocompare.com/data/histominute?fsym=ELLA&tsym=USD&limit=1440
-
-        /*
-            300,  24hrs
-            1800, week
-            14400, month
-            86400  year
-         */
-
-        /*
-        Returns candlestick chart data. Required GET parameters are "currencyPair", "period" (candlestick period in seconds;
-        valid values are 300, 900, 1800, 7200, 14400, and 86400), "start", and "end". "Start" and "end" are given in
-        UNIX timestamp format and used to specify the date range for the data returned.
-         */
-
-
-        // get from our local trust-ray api URL
-        // that will check mongo for the type of request it wants,
-        //  if the record does not exist or is older than 1 minute,
-        //     fetch new record
-        //     store it
-        //  return record
-
         String url = null;
         switch (period) {
             case 300: url = apiUrl + "returnChartData?fsym=ELLA&tsym=" + (usd ? "USD" : "BTC") + "&period=histominute&limit=1440";
@@ -73,8 +47,6 @@ public class EllaismNetwork implements NetworkAPI {
         }
 
         get(url, b);
-        //testing commit perms
-        //get("http://poloniex.com/public?command=returnChartData&currencyPair=" + (usd ? "USDT_ETH" : "BTC_ETH") + "&start=" + starttime + "&end=9999999999&period=" + period, b);
     }
 
 
@@ -206,10 +178,10 @@ public class EllaismNetwork implements NetworkAPI {
 
 
     public void getBalances(ArrayList<StorableWallet> addresses, Callback b) throws IOException {
-        String url = "http://api.etherscan.io/api?module=account&action=balancemulti&address=";
+        String url = apiUrl + "account_balancemulti?address=";
         for (StorableWallet address : addresses)
             url += address.getPubKey() + ",";
-        url = url.substring(0, url.length() - 1) + "&tag=latest&apikey=" + token; // remove last , AND add token
+        url = url.substring(0, url.length() - 1);
         get(url, b);
     }
 
