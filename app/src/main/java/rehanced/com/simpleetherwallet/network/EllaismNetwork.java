@@ -158,12 +158,14 @@ public class EllaismNetwork implements NetworkAPI {
 
 
     public void getGasLimitEstimate(String to, Callback b) throws IOException {
-        get("http://api.etherscan.io/api?module=proxy&action=eth_estimateGas&to=" + to + "&value=0xff22&gasPrice=0x051da038cc&gas=0xffffff&apikey=" + token, b);
+        String url = apiUrl + "estimateGas?to=" + to + "&value=0xff22&gasPrice=0x051da038cc&gas=0xffffff";
+        get(url, b);
     }
 
 
     public void getBalance(String address, Callback b) throws IOException {
-        get("http://api.etherscan.io/api?module=account&action=balance&address=" + address + "&apikey=" + token, b);
+        String url = apiUrl + "account_balancemulti?address=" + address;
+        get(url, b);
     }
 
 
