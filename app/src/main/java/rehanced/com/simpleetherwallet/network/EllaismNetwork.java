@@ -94,7 +94,7 @@ public class EllaismNetwork implements NetworkAPI {
 
 
     public void getGasPrice(Callback b) throws IOException {
-        get("http://api.etherscan.io/api?module=proxy&action=eth_gasPrice&apikey=" + token, b);
+        get(apiUrl + "gasPrice", b);
     }
 
 
@@ -164,13 +164,14 @@ public class EllaismNetwork implements NetworkAPI {
 
 
     public void getBalance(String address, Callback b) throws IOException {
-        String url = apiUrl + "account_balancemulti?address=" + address;
+        String url = apiUrl + "account_balance?address=" + address;
         get(url, b);
     }
 
 
     public void getNonceForAddress(String address, Callback b) throws IOException {
-        get("http://api.etherscan.io/api?module=proxy&action=eth_getTransactionCount&address=" + address + "&tag=latest&apikey=" + token, b);
+        String url = apiUrl + "getTransactionCount?data=" + address + "&tag=latest";
+        get(url, b);
     }
 
 
@@ -189,7 +190,8 @@ public class EllaismNetwork implements NetworkAPI {
 
 
     public void forwardTransaction(String raw, Callback b) throws IOException {
-        get("http://api.etherscan.io/api?module=proxy&action=eth_sendRawTransaction&hex=" + raw + "&apikey=" + token, b);
+        String url = apiUrl + "sendRawTransaction?hex=" + raw;
+        get(url, b);
     }
 
 
