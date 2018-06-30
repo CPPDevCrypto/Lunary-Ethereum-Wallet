@@ -216,7 +216,7 @@ public abstract class FragmentTransactionsAbstract extends Fragment implements V
                 break;
             }
             case 102: { // Open in Browser
-                String url = "https://etherscan.io/tx/" + wallets.get(position).getTxHash();
+                String url = "https://explorer.ellaism.org/tx/" + wallets.get(position).getTxHash();
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
