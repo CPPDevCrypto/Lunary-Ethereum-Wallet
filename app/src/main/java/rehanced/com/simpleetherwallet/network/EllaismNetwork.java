@@ -59,13 +59,14 @@ public class EllaismNetwork implements NetworkAPI {
      * @throws IOException Network exceptions
      */
     public void getInternalTransactions(String address, Callback b, boolean force) throws IOException {
+        String url = apiUrl + "txlistinternal?address=" + address + "&startblock=0&endblock=99999999&sort=asc";
         if (!force && RequestCache.getInstance().contains(RequestCache.TYPE_TXS_INTERNAL, address)) {
             b.onResponse(null, new Response.Builder().code(200).message("").request(new Request.Builder()
-                    .url("http://api.etherscan.io/api?module=account&action=txlistinternal&address=" + address + "&startblock=0&endblock=99999999&sort=asc&apikey=" + token)
+                    .url(url)
                     .build()).protocol(Protocol.HTTP_1_0).body(ResponseBody.create(MediaType.parse("JSON"), RequestCache.getInstance().get(RequestCache.TYPE_TXS_INTERNAL, address))).build());
             return;
         }
-        get("http://api.etherscan.io/api?module=account&action=txlistinternal&address=" + address + "&startblock=0&endblock=99999999&sort=asc&apikey=" + token, b);
+        get(url, b);
     }
 
 
@@ -78,13 +79,14 @@ public class EllaismNetwork implements NetworkAPI {
      * @throws IOException Network exceptions
      */
     public void getNormalTransactions(String address, Callback b, boolean force) throws IOException {
+        String url = apiUrl + "txlist?address=" + address + "&startblock=0&endblock=99999999&sort=asc";
         if (!force && RequestCache.getInstance().contains(RequestCache.TYPE_TXS_NORMAL, address)) {
             b.onResponse(null, new Response.Builder().code(200).message("").request(new Request.Builder()
-                    .url("http://api.etherscan.io/api?module=account&action=txlist&address=" + address + "&startblock=0&endblock=99999999&sort=asc&apikey=" + token)
+                    .url(url)
                     .build()).protocol(Protocol.HTTP_1_0).body(ResponseBody.create(MediaType.parse("JSON"), RequestCache.getInstance().get(RequestCache.TYPE_TXS_NORMAL, address))).build());
             return;
         }
-        get("http://api.etherscan.io/api?module=account&action=txlist&address=" + address + "&startblock=0&endblock=99999999&sort=asc&apikey=" + token, b);
+        get(url, b);
     }
 
 
