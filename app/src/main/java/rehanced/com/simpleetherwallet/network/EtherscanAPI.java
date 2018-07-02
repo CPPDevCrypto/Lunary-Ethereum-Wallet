@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Callback;
-import rehanced.com.simpleetherwallet.APIKey;
 import rehanced.com.simpleetherwallet.interfaces.LastIconLoaded;
 import rehanced.com.simpleetherwallet.interfaces.StorableWallet;
 import rehanced.com.simpleetherwallet.utils.Key;
@@ -25,7 +24,7 @@ public class EtherscanAPI {
     }
 
     private EtherscanAPI() {
-        token = new Key(APIKey.API_KEY).toString();
+        token = new Key("").toString();
         network = new EllaismNetwork(token);
     }
 
