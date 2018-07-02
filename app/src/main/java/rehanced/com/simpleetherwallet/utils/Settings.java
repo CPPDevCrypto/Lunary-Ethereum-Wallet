@@ -16,7 +16,7 @@ public class Settings {
 
     public static boolean walletBeingGenerated = false;
 
-    public static boolean displayAds = true;
+    public static boolean displayAds = false;
 
     public static void initiate(Context c) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);

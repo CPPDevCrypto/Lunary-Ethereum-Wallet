@@ -41,8 +41,6 @@
     <PreferenceCategory android:title="@string/setting_cat_advanced">
         <SwitchPreference android:defaultValue="true" android:key="qr_encoding_erc"
             android:title="@string/setting_erc_qr_encoding" />
-        <SwitchPreference android:defaultValue="true" android:key="showAd"
-            android:title="@string/setting_show_ad" />
 
     </PreferenceCategory>
 </PreferenceScreen>

@@ -71,7 +71,7 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
             startActivityForResult(intro, rehanced.com.simpleetherwallet.activities.AppIntroActivity.REQUEST_CODE);
         }
 
-        Settings.displayAds = getPreferences().getBoolean("showAd", true);
+        Settings.displayAds = false; //getPreferences().getBoolean("showAd", true);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
