@@ -152,7 +152,7 @@ public class ExchangeCalculator {
     public double sumUpTokenEther(List<TokenDisplay> token) {
         double summedEther = 0;
         for (TokenDisplay t : token) {
-            if (t.getShorty().equals("ETH")) continue;
+            if (t.getShorty().equals("ELLA")) continue;
             summedEther += convertTokenToEther(t.getBalanceDouble(), t.getUsdprice());
         }
         return summedEther;
