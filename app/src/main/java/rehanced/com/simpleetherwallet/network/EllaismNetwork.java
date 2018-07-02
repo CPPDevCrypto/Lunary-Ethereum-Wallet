@@ -26,7 +26,7 @@ import rehanced.com.simpleetherwallet.utils.TokenIconCache;
 
 public class EllaismNetwork implements NetworkAPI {
     private String token;
-    private String apiUrl = "http://ellaismwallet.nonlocal.ca/";
+    private String apiUrl = "https://trustray.outdoordevs.com/";
 
     EllaismNetwork(String theToken)
     {
