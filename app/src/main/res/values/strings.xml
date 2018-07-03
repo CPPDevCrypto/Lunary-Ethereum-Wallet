@@ -14,8 +14,8 @@
     <string name="fab_send">Send</string>
     <string name="fab_sendether">Send Ella</string>
     <string name="fab_setwalletname">Set Wallet Name</string>
-    <string name="drawer_import">Import Wallets</string>
-    <string name="drawer_about">About Us</string>
+    <string name="drawer_import">Import Wallet</string>
+    <string name="drawer_about">About</string>
     <string name="drawer_donate">Donate</string>
 
     <string name="fr_price_current_price">Current Price</string>
@@ -233,7 +233,14 @@
     <string name="send_expert_warning">You can add extra data to send along with your transaction. If you don\'t know what this is then don\'t touch it or bad things may happen!</string>
     <string name="expert_mode_optional">Expert Mode (Optional)</string>
     <string name="transaction_failed">Transaction failed</string>
-    <string name="reddit">Ellaism Subreddit</string>
+    <string name="reddit">Reddit</string>
+    <string name="discord">Discord</string>
+    <string name="website">Website</string>
+    <string name="twitter">Twitter</string>
+    <string name="github">GitHub</string>
+    <string name="facebook">Facebook</string>
+    <string name="bitcointalk">Bitcoin Talk</string>
+    <string name="telegram">Telegram</string>
     <string name="add">Add</string>
     <string name="show">Show</string>
     <string name="setting_erc_qr_encoding">Use ERC-67 QR Encoding</string>
