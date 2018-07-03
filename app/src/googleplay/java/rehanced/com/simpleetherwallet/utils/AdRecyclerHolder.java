@@ -18,7 +18,7 @@ public class AdRecyclerHolder extends RecyclerView.ViewHolder {
     AdView ad;
     public AdRecyclerHolder(View view) {
         super(view);
-        ad = (AdView) view.findViewById(R.id.adView);
+//        ad = (AdView) view.findViewById(R.id.adView);
     }
 
     void loadAd(Context c){
