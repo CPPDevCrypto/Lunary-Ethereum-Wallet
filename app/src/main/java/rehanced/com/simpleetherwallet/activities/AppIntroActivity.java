@@ -23,7 +23,7 @@ public class AppIntroActivity extends AppIntro2 {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addSlide(AppIntroFragment.newInstance(getString(R.string.app_intro_title), getString(R.string.app_intro_text), R.drawable.ether_intro, Color.parseColor("#49627e")));
+        addSlide(AppIntroFragment.newInstance(getString(R.string.app_intro_title), getString(R.string.app_intro_text), R.drawable.ether_intro, Color.parseColor("#ffffff")));
         tosFragment = new ToSFragment();
         addSlide(tosFragment);
 
