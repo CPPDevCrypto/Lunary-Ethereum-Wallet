@@ -67,8 +67,8 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
         // App Intro
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (preferences.getLong("APP_INSTALLED", 0) == 0) {
-            Intent intro = new Intent(this, rehanced.com.simpleetherwallet.activities.AppIntroActivity.class);
-            startActivityForResult(intro, rehanced.com.simpleetherwallet.activities.AppIntroActivity.REQUEST_CODE);
+//            Intent intro = new Intent(this, rehanced.com.simpleetherwallet.activities.AppIntroActivity.class);
+//            startActivityForResult(intro, rehanced.com.simpleetherwallet.activities.AppIntroActivity.REQUEST_CODE);
         }
 
         Settings.displayAds = false; //getPreferences().getBoolean("showAd", true);
@@ -93,7 +93,14 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
                         new PrimaryDrawerItem().withName(getResources().getString(R.string.drawer_import)).withIcon(R.drawable.ic_action_wallet3),
                         new PrimaryDrawerItem().withName(getResources().getString(R.string.action_settings)).withIcon(R.drawable.ic_setting),
                         new PrimaryDrawerItem().withName(getResources().getString(R.string.drawer_about)).withIcon(R.drawable.ic_about),
-                        new PrimaryDrawerItem().withName(getResources().getString(R.string.reddit)).withIcon(R.drawable.ic_reddit)
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.discord)).withIcon(R.mipmap.ic_discord),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.website)).withIcon(R.mipmap.ic_website),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.twitter)).withIcon(R.mipmap.ic_twitter),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.github)).withIcon(R.mipmap.ic_github),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.reddit)).withIcon(R.mipmap.ic_reddit),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.telegram)).withIcon(R.mipmap.ic_telegram),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.facebook)).withIcon(R.mipmap.ic_facebook),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.bitcointalk)).withIcon(R.mipmap.ic_bitcointalk)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -447,18 +454,70 @@ public class MainActivity extends SecureAppCompatActivity implements NetworkUpda
                         .show();
                 break;
             }
+
+            /* new PrimaryDrawerItem().withName(getResources().getString(R.string.discord)).withIcon(R.mipmap.ic_discord),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.website)).withIcon(R.mipmap.ic_website),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.twitter)).withIcon(R.mipmap.ic_twitter),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.github)).withIcon(R.mipmap.ic_github),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.reddit)).withIcon(R.mipmap.ic_reddit),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.telegram)).withIcon(R.mipmap.ic_telegram),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.facebook)).withIcon(R.mipmap.ic_facebook),
+                        new PrimaryDrawerItem().withName(getResources().getString(R.string.bitcointalk)).withIcon(R.mipmap.ic_bitcointalk)
+                        */
             case 4: {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://www.reddit.com/r/lunary"));
+                i.setData(Uri.parse("https://discord.ellaism.org"));
                 startActivity(i);
                 break;
             }
             case 5: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://ellaism.org/"));
+                startActivity(i);
+                break;
+            }
+            case 6: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://twitter.com/ellaismproject"));
+                startActivity(i);
+                break;
+            }
+            case 7: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://github.com/ellaism"));
+                startActivity(i);
+                break;
+            }
+            case 8: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://www.reddit.com/r/ellaism"));
+                startActivity(i);
+                break;
+            }
+            case 9: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://t.me/ellaismcoin"));
+                startActivity(i);
+                break;
+            }
+            case 10: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://www.facebook.com/Ellaism-290479708156909"));
+                startActivity(i);
+                break;
+            }
+            case 11: {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://bitcointalk.org/index.php?topic=2168042"));
+                startActivity(i);
+                break;
+            }
+            case 12: {
                 if (WalletStorage.getInstance(this).getFullOnly().size() == 0) {
                     Dialogs.noFullWallet(this);
                 } else {
                     Intent donate = new Intent(this, SendActivity.class);
-                    donate.putExtra("TO_ADDRESS", "0xa9981a33f6b1A18da5Db58148B2357f22B44e1e0");
+                    donate.putExtra("TO_ADDRESS", "0xe9C2d958E6234c862b4AfBD75b2fd241E9556303");
                     startActivity(donate);
                 }
                 break;
