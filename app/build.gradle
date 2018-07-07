@@ -9,8 +9,8 @@ android {
         applicationId "com.outdoordevs.ellaism.wallet"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 28
-        versionName "1.37"
+        versionCode 30
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
