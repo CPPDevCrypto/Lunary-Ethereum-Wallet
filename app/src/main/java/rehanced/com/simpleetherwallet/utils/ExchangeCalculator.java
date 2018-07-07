@@ -124,7 +124,7 @@ public class ExchangeCalculator {
                 return Math.floor(balance * rate * 10) / 10;
             if (balance * rate >= 100)
                 return Math.floor(balance * rate * 100) / 100;
-            return Math.floor(balance * rate * 1000) / 1000;
+            return Math.floor(balance * rate * 100000000) / 100000000;
         }
     }
 
@@ -136,7 +136,7 @@ public class ExchangeCalculator {
         if (index == 2) {
             return displayUsdNicely(Math.floor(balance.doubleValue() * rate * 100) / 100) + "";
         } else
-            return displayEthNicelyExact(balance.multiply(new BigDecimal(rate)).setScale(7, RoundingMode.CEILING).doubleValue());
+            return displayEthNicelyExact(balance.multiply(new BigDecimal(rate)).setScale(9, RoundingMode.CEILING).doubleValue());
     }
 
     public double convertToUsd(double balance) {
