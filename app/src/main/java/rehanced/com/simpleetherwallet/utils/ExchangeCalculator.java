@@ -38,7 +38,7 @@ public class ExchangeCalculator {
     }
 
     private CurrencyEntry[] conversionNames = new CurrencyEntry[]{
-            new CurrencyEntry("ELLA", 1, "Ξ"),
+            new CurrencyEntry("ELLA", 1, "ELLA"),
             new CurrencyEntry("BTC", 0.07, "฿"),
             //new CurrencyEntry("Satoshi", 0.07, "里"),
             new CurrencyEntry("USD", 0, "$")
