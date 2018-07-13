@@ -29,15 +29,11 @@
                 android:gravity="center"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="25dp"
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="3dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#1f3651"
-                    android:gravity="center"
                     android:id="@+id/addressimage" />
 
             </LinearLayout>
@@ -47,7 +43,8 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="8">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -58,7 +55,7 @@
                 <LinearLayout
                     android:layout_width="0sp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
                     android:layout_gravity="bottom"
                     android:orientation="horizontal">
 
@@ -72,17 +69,6 @@
                         android:textColor="@color/colorPrimaryDark"
                         android:text="" /> <!--android:textColor="@color/colorPrimaryDark" -->
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:layout_gravity="bottom"
-                    android:gravity="right"
-                    android:id="@+id/etherbalance"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_weight="1"
-                    android:text="" /> <!--@color/colorPrimary -->
 
             </LinearLayout>
 
@@ -102,6 +88,21 @@
                     android:text="" />
 
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:id="@+id/etherbalance"
+                android:textColor="@color/colorPrimary"
+                android:text="" /> <!--@color/colorPrimary -->
         </LinearLayout>
     </LinearLayout>
 
