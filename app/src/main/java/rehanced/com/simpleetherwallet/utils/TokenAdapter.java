@@ -2,6 +2,7 @@ package rehanced.com.simpleetherwallet.utils;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +11,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import java.util.List;
 
 import rehanced.com.simpleetherwallet.R;
 import rehanced.com.simpleetherwallet.data.TokenDisplay;
+
+import com.squareup.picasso.Picasso;
 
 
 public class TokenAdapter extends RecyclerView.Adapter<TokenAdapter.MyViewHolder> {
@@ -25,17 +29,18 @@ public class TokenAdapter extends RecyclerView.Adapter<TokenAdapter.MyViewHolder
     private View.OnClickListener listener;
     private View.OnCreateContextMenuListener contextMenuListener;
     private int position;
+    private String imageUrl = "https://ellaism.github.io/trust-wallet-ios/images/";
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, nativebalance, etherbalance, shorty;
-        public TextView image;
+        public ImageView image;
         public LinearLayout container;
 
         public MyViewHolder(View view) {
             super(view);
             nativebalance = (TextView) view.findViewById(R.id.nativebalance);
             name = (TextView) view.findViewById(R.id.tokenname);
-            image = (TextView) view.findViewById(R.id.addressimage);
+            image = (ImageView) view.findViewById(R.id.addressimage);
             etherbalance = (TextView) view.findViewById(R.id.etherbalance);
             container = (LinearLayout) view.findViewById(R.id.container);
         }
@@ -78,20 +83,25 @@ public class TokenAdapter extends RecyclerView.Adapter<TokenAdapter.MyViewHolder
         holder.name.setText(box.getName());
         double tbalance = box.getBalanceDouble();
         holder.nativebalance.setText(ExchangeCalculator.getInstance().displayEthNicely(tbalance) + " " + box.getShorty());
-        holder.etherbalance.setText(
-                ExchangeCalculator.getInstance().displayEthNicely(
-                        ExchangeCalculator.getInstance().convertRate(
-                                ExchangeCalculator.getInstance().convertTokenToEther(tbalance, box.getUsdprice()),
-                                ExchangeCalculator.getInstance().getCurrent().getRate()
-                        )) + " " + ExchangeCalculator.getInstance().getCurrent().getShorty());
+
+        if ((box.getShorty() == "ELLA") || ((box.getShorty() != "ELLA") && (box.getUsdprice() > 0))) {
+            holder.etherbalance.setText(
+                    ExchangeCalculator.getInstance().displayEthNicely(
+                            ExchangeCalculator.getInstance().convertRate(
+                                    ExchangeCalculator.getInstance().convertTokenToEther(tbalance, box.getUsdprice()),
+                                    ExchangeCalculator.getInstance().getCurrent().getRate()
+                            )) + " " + ExchangeCalculator.getInstance().getCurrent().getShorty());
+        } else {
+            holder.etherbalance.setText(ExchangeCalculator.getInstance().displayEthNicely(tbalance) + " " + box.getShorty());
+        }
         if (box.getContractAddr() != null && box.getContractAddr().length() > 3) {
-            holder.image.setText("");
+            Picasso.get().load(this.imageUrl + "tokens/" + box.getContractAddr() + ".png").into(holder.image);
             String iconName = box.getName();
             if (iconName.indexOf(" ") > 0)
                 iconName = iconName.substring(0, iconName.indexOf(" "));
             holder.image.setBackground(new BitmapDrawable(context.getResources(), TokenIconCache.getInstance(context).get(iconName)));
         } else {
-            holder.image.setText("Ξ");
+            Picasso.get().load(this.imageUrl + "ellaism.png").into(holder.image);
             holder.image.setBackgroundResource(0);
             holder.etherbalance.setText(
                     ExchangeCalculator.getInstance().displayEthNicely(
