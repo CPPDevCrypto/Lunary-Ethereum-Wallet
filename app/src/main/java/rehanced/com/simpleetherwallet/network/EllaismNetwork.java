@@ -111,11 +111,12 @@ public class EllaismNetwork implements NetworkAPI {
     public void getTokenBalances(String address, Callback b, boolean force) throws IOException {
         if (!force && RequestCache.getInstance().contains(RequestCache.TYPE_TOKEN, address)) {
             b.onResponse(null, new Response.Builder().code(200).message("").request(new Request.Builder()
-                    .url("https://api.ethplorer.io/getAddressInfo/" + address + "?apiKey=freekey")
+                    .url(apiUrl + "getAddressInfo/" + address)
                     .build()).protocol(Protocol.HTTP_1_0).body(ResponseBody.create(MediaType.parse("JSON"), RequestCache.getInstance().get(RequestCache.TYPE_TOKEN, address))).build());
             return;
         }
-        get("http://api.ethplorer.io/getAddressInfo/" + address + "?apiKey=freekey", b);
+        //get("http://api.ethplorer.io/getAddressInfo/" + address + "?apiKey=freekey", b);
+        get(apiUrl + "getAddressInfo/" + address, b);
     }
 
 

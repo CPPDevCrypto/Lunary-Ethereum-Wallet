@@ -94,6 +94,7 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.squareup.picasso:picasso:2.71828'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
