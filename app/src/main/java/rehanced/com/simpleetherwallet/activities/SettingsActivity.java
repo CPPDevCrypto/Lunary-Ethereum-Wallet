@@ -72,26 +72,27 @@ public class SettingsActivity extends AppCompatActivity {
             });
             if (((AnalyticsApplication) getActivity().getApplication()).isGooglePlayBuild()) {
                 final SwitchPreference adSwitch = (SwitchPreference) findPreference("showAd");
-                adSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object o) {
-                        if (adSwitch.isChecked()) {
-                            Dialogs.adDisable(getActivity(), new AdDialogResponseHandler() {
-                                @Override
-                                public void continueSettingChange(boolean mContinue) {
-                                    if (mContinue) {
-                                        adSwitch.setChecked(false);
-                                        Settings.displayAds = false;
-                                    }
-                                }
-                            });
-                            return false;
-                        } else {
-                            Settings.displayAds = true;
-                            return true;
-                        }
-                    }
-                });
+                Settings.displayAds = false;
+//                adSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//                    @Override
+//                    public boolean onPreferenceChange(Preference preference, Object o) {
+//                        if (adSwitch.isChecked()) {
+//                            Dialogs.adDisable(getActivity(), new AdDialogResponseHandler() {
+//                                @Override
+//                                public void continueSettingChange(boolean mContinue) {
+//                                    if (mContinue) {
+//                                        adSwitch.setChecked(false);
+//                                        Settings.displayAds = false;
+//                                    }
+//                                }
+//                            });
+//                            return false;
+//                        } else {
+//                            Settings.displayAds = true;
+//                            return true;
+//                        }
+//                    }
+//                });
             }
         }
     }
